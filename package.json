@@ -1,0 +1,102 @@
+{
+  "private": true,
+  "name": "ocaml-debugger",
+  "displayName": "OCaml Debugger",
+  "description": "OCaml debugger.",
+  "version": "0.1.0",
+  "publisher": "hackwaly",
+  "icon": "images/colour-icon.png",
+  "engines": {
+    "vscode": "^1.17.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hackwaly/vscode-ocaml-debugger"
+  },
+  "categories": [
+    "Debuggers"
+  ],
+  "main": "extension.js",
+  "activationEvents": [
+    "onDebugResolve:ocaml"
+  ],
+  "contributes": {
+    "debuggers": [
+      {
+        "type": "ocaml-debugger",
+        "label": "OCaml",
+        "runtime": "node",
+        "program": "debug-adapter.js",
+        "enableBreakpointsFor": {
+          "languageIds": [
+            "ocaml",
+            "ocamllex",
+            "menhir"
+          ]
+        },
+        "configurationSnippets": [
+          {
+            "label": "OCaml: Launch program",
+            "description": "Debug the program",
+            "body": {
+              "name": "${2:Launch file}",
+              "type": "ocaml-debugger",
+              "request": "launch",
+              "program": "^\"${1:\\${file}}\""
+            }
+          }
+        ],
+        "configurationAttributes": {
+          "launch": {
+            "required": [
+              "program"
+            ],
+            "properties": {
+              "noDebug": {
+                "type": "boolean",
+                "default": false
+              },
+              "cwd": {
+                "type": "string",
+                "description": "The working directory for debuggee program."
+              },
+              "env": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "description": "Environment variables passed to the debuggee program.",
+                "default": {}
+              },
+              "program": {
+                "type": "string",
+                "description": "The path of debuggee program."
+              },
+              "arguments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "The command-line arguments for the debuggee program."
+              },
+              "console": {
+                "enum": [
+                  "internalConsole",
+                  "integratedTerminal",
+                  "externalTerminal"
+                ],
+                "description": "Where to launch the debug target: internal console, integrated terminal, or external terminal.",
+                "default": "internalConsole"
+              },
+              "stopOnEntry": {
+                "type": "boolean",
+                "description": "Automatically stop after launch.",
+                "default": false
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}
