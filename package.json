@@ -72,6 +72,10 @@
                 "type": "string",
                 "description": "The path of debuggee program."
               },
+              "symbols": {
+                "type": "string",
+                "description": "The path to optional OCaml debug symbols .cds file."
+              },
               "arguments": {
                 "type": "array",
                 "items": {
