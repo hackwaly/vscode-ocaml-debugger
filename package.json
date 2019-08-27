@@ -3,7 +3,7 @@
   "name": "ocaml-debugger",
   "displayName": "OCaml Debugger",
   "description": "OCaml debugger.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "hackwaly",
   "icon": "images/colour-icon.png",
   "engines": {
