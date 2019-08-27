@@ -3,7 +3,7 @@
   "name": "ocaml-debugger",
   "displayName": "OCaml Debugger",
   "description": "OCaml debugger.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "hackwaly",
   "icon": "images/colour-icon.png",
   "engines": {
@@ -21,19 +21,23 @@
     "onDebugResolve:ocaml"
   ],
   "contributes": {
+    "breakpoints": [
+      {
+        "language": "ocaml"
+      },
+      {
+        "language": "ocamllex"
+      },
+      {
+        "language": "menhir"
+      }
+    ],
     "debuggers": [
       {
         "type": "ocaml-debugger",
         "label": "OCaml",
         "runtime": "node",
         "program": "debug-adapter.js",
-        "enableBreakpointsFor": {
-          "languageIds": [
-            "ocaml",
-            "ocamllex",
-            "menhir"
-          ]
-        },
         "configurationSnippets": [
           {
             "label": "OCaml: Launch program",
